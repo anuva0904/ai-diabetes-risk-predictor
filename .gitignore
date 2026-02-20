@@ -1,19 +1,44 @@
-# Node
+# Node.js
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build folders
+dist/
+build/
+.next/
+out/
 
 # Environment variables
 .env
+.env.*
+backend/.env
+frontend/.env
+ml-service/.env
 
 # Logs
+logs/
 *.log
 
-# Mac files
+# OS files
 .DS_Store
 
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
 
-# Build folders
-dist/
-build/
+# Coverage
+coverage/
+.nyc_output/
+
+# VS Code / IDE
+.vscode/
+.idea/
+*.swp

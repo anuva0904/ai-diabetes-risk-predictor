@@ -1,0 +1,28 @@
+{
+  "name": "health-risk-backend",
+  "version": "1.0.0",
+  "description": "Backend API for AI-based Diabetes Risk Predictor",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "ai",
+    "machine-learning",
+    "diabetes",
+    "health",
+    "mern",
+    "express",
+    "mongodb"
+  ],
+  "author": "Anuva Singh",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.13"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
