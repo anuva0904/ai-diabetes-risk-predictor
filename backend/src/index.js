@@ -17,6 +17,7 @@ import dotenv from 'dotenv';  // Loads environment variables from .env file
 import {app} from './app.js'  // Express app instance
 import connectDB from "./config/db.js"; // Database connection function
 
+
 // -----------------------------
 // Load Environment Variables
 // -----------------------------

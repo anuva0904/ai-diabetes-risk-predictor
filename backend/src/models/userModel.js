@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { adminSchema } from "./schemas/adminModel.js"
-import mongooseAggreatePaginate from 'mongoose-aggregate-paginate-v2'
+import { generateRandomToken, hashToken } from "../utils/token.js";
+
 
 const userSchema = new mongoose.Schema(
   {
@@ -137,7 +138,13 @@ userSchema.index(
 // Recent users index
 userSchema.index({ createdAt: -1 });
 
-userSchema.plugin(mongooseAggreatePaginate)
+userSchema.methods.generatePasswordResetToken = function () {
+  const rawToken = generateRandomToken();
 
+  this.passwordResetToken = hashToken(rawToken);
+  this.passwordResetExpiresAt = Date.now() + 10 * 60 * 1000; // 10 minutes
+
+  return rawToken; // send this in email
+};
 
 export const User = mongoose.model('User',userSchema)
