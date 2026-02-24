@@ -17,6 +17,8 @@ import cookieParser from "cookie-parser" // Parses cookies from client requests
 // ==================================================
 // Internal Imports (Project files)
 // ==================================================
+import userRoutes from './routes/userRoutes.js'
+
 
 
 
@@ -37,7 +39,7 @@ const app = express()
  */
 app.use(cors(
     {
-        origin : process.env.CORS_ORIGIN, // Frontend URL
+        origin : "*", // Frontend URL
         credentials:true                  // Allow cookies/auth headers
     }
 ))
@@ -66,7 +68,7 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 
-
+app.use('/api/v1/users',userRoutes);
 
 // ==================================================
 // Export App Instance

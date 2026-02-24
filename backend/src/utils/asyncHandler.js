@@ -11,7 +11,7 @@
  * router.get("/", asyncHandler(controllerFunction))
  */
 
-const asyncHandler = (fn)=>async(req,res,next)=>{
+export const asyncHandler = (fn)=>async(req,res,next)=>{
     try{
         // Execute the async controller function
         await fn(req,res,next)
@@ -21,10 +21,11 @@ const asyncHandler = (fn)=>async(req,res,next)=>{
      * - Send error response to client
      * - Default status code = 500 (Server Error)
      */
-        res.status(error.code || 500).json({
+        res.status(error.statusCode || 500).json({
             success:false,
             message: error.message
         })
 
     }
 }
+

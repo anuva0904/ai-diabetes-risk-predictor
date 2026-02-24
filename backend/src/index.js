@@ -14,6 +14,8 @@
 // External Imports
 // ----------------------------- 
 import dotenv from 'dotenv';  // Loads environment variables from .env file
+dotenv.config({ path: './.env' })
+console.log("ENV TEST:", process.env.CLOUDINARY_API_KEY);
 import {app} from './app.js'  // Express app instance
 import connectDB from "./config/db.js"; // Database connection function
 
@@ -31,7 +33,7 @@ import connectDB from "./config/db.js"; // Database connection function
 
 // -----------------------------
 
-dotenv.config({ path: './.env' })
+
 
 // Database Connection & Server Start
 // -----------------------------

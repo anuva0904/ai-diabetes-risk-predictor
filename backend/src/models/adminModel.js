@@ -5,8 +5,6 @@ export const adminSchema = new mongoose.Schema(
     adminId: {
       type: String,
       required: true,
-      unique: true,
-      trim: true,
     },
 
     department: {

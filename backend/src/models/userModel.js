@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { adminSchema } from "./schemas/adminModel.js"
+import { adminSchema } from "./adminModel.js"
 import { generateRandomToken, hashToken } from "../utils/token.js";
 
 
@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       lowercase: true,
       trim: true,
-      index: true,
+      
     },
 
     phoneNumber: {
@@ -45,7 +45,10 @@ const userSchema = new mongoose.Schema(
       enum: ["Patient", "Admin"],
       default: "Patient",
     },
-
+    profilePhoto:{
+      type: String,
+      required:true
+    },
     // ==================================================
     // Conditional Admin Subdocument
     // ==================================================
@@ -146,5 +149,15 @@ userSchema.methods.generatePasswordResetToken = function () {
 
   return rawToken; // send this in email
 };
+
+userSchema.index(
+  { "admin_info.adminId": 1 },
+  {
+    unique: true,
+    partialFilterExpression: {
+      "admin_info.adminId": { $exists: true, $ne: null }
+    }
+  }
+);
 
 export const User = mongoose.model('User',userSchema)
